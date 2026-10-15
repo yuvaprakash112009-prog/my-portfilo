@@ -1,0 +1,412 @@
+/**
+ * WEB CORE — STYLESHEET
+ * Replicating the refined design language, animations, and tokens
+ * of the reference design (https://rk-services-rho.vercel.app/)
+ */
+
+/* =========================================================
+   1. DESIGN TOKENS & CSS VARIABLES
+========================================================== */
+:root,
+[data-theme="dark"] {
+  --color-black: 10 10 10;
+  --color-charcoal: 20 20 20;
+  --color-charcoal2: 28 28 28;
+  --color-offwhite: 245 245 243;
+  --color-gray-400: 138 138 138;
+  --color-gray-600: 92 92 92;
+  --color-gray-800: 42 42 42;
+  --color-glow: #ffffff0f;
+  --color-gold: 201 162 39;
+  --color-gold-600: 163 127 26;
+  --color-gold-700: 133 103 20;
+  --color-gold-glow: rgba(201, 162, 39, 0.35);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="light"] {
+  --color-black: 250 250 249;
+  --color-charcoal: 255 255 255;
+  --color-charcoal2: 240 240 238;
+  --color-offwhite: 17 17 17;
+  --color-gray-400: 100 100 100;
+  --color-gray-600: 130 130 130;
+  --color-gray-800: 224 224 221;
+  --color-glow: #0000000f;
+  --color-gold: 163 127 26;
+  --color-gold-600: 133 103 20;
+  --color-gold-700: 110 84 14;
+  --color-gold-glow: rgba(163, 127, 26, 0.25);
+  --border-subtle: rgba(0, 0, 0, 0.08);
+}
+
+/* =========================================================
+   2. GLOBAL BASE STYLES
+========================================================== */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: rgb(var(--color-black));
+  color: rgb(var(--color-offwhite));
+  font-family: 'Poppins', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  overflow-x: hidden;
+  line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+section[id] {
+  scroll-margin-top: 80px;
+}
+
+::selection {
+  color: #f5f5f3;
+  background: rgba(201, 162, 39, 0.3);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 9px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+::-webkit-scrollbar-thumb {
+  background: #262626;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #444444;
+}
+
+:focus-visible {
+  outline: 2px solid rgba(201, 162, 39, 0.7);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Layout Container */
+.max-shell {
+  width: 100%;
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container-px {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+@media (min-width: 640px) {
+  .container-px {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+@media (min-width: 1024px) {
+  .container-px {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+/* =========================================================
+   3. BACKGROUND NOISE & PATTERNS
+========================================================== */
+.noise-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+}
+
+.bg-grid-faint {
+  background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.07) 1px, transparent 0);
+  background-size: 44px 44px;
+}
+
+/* =========================================================
+   4. SPEEDER PRELOADER ANIMATION (MATCHING REFERENCE)
+========================================================== */
+.speeder-loader {
+  overflow: hidden;
+}
+.speeder-loader .loader {
+  margin-left: -50px;
+  animation: 0.4s linear infinite speeder;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+.speeder-loader .loader > span {
+  background: #f5f5f3;
+  border-radius: 2px 10px 1px 0;
+  width: 35px;
+  height: 5px;
+  position: absolute;
+  top: -19px;
+  left: 60px;
+}
+.speeder-loader .base span {
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-right: 100px solid #f5f5f3;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+.speeder-loader .base span:before {
+  content: "";
+  background: #f5f5f3;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  position: absolute;
+  top: -16px;
+  right: -110px;
+}
+.speeder-loader .base span:after {
+  content: "";
+  border-top: 0 solid transparent;
+  border-bottom: 16px solid transparent;
+  border-right: 55px solid #f5f5f3;
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: -16px;
+  right: -98px;
+}
+.speeder-loader .face {
+  background: #f5f5f3;
+  border-radius: 20px 20px 0 0;
+  width: 20px;
+  height: 12px;
+  position: absolute;
+  top: -15px;
+  right: -125px;
+  transform: rotate(-40deg);
+}
+.speeder-loader .face:after {
+  content: "";
+  transform-origin: 50%;
+  background: #f5f5f3;
+  border-radius: 0 0 0 2px;
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  top: 7px;
+  right: 4px;
+  transform: rotate(40deg);
+}
+.speeder-loader .loader > span > span {
+  background: #f5f5f3;
+  width: 30px;
+  height: 1px;
+  position: absolute;
+}
+.speeder-loader .loader > span > span:nth-child(1) {
+  animation: 0.2s linear infinite fazer1;
+}
+.speeder-loader .loader > span > span:nth-child(2) {
+  animation: 0.4s linear infinite fazer2;
+  top: 3px;
+}
+.speeder-loader .loader > span > span:nth-child(3) {
+  animation: 0.4s linear -1s infinite fazer3;
+  top: 1px;
+}
+.speeder-loader .loader > span > span:nth-child(4) {
+  animation: 1s linear -1s infinite fazer4;
+  top: 4px;
+}
+@keyframes fazer1 {
+  0% { left: 0; }
+  100% { opacity: 0; left: -80px; }
+}
+@keyframes fazer2 {
+  0% { left: 0; }
+  100% { opacity: 0; left: -100px; }
+}
+@keyframes fazer3 {
+  0% { left: 0; }
+  100% { opacity: 0; left: -50px; }
+}
+@keyframes fazer4 {
+  0% { left: 0; }
+  100% { opacity: 0; left: -150px; }
+}
+@keyframes speeder {
+  0% { transform: translate(2px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -3px) rotate(-1deg); }
+  20% { transform: translate(-2px, 0px) rotate(1deg); }
+  30% { transform: translate(1px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 3px) rotate(-1deg); }
+  60% { transform: translate(-1px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-2px, -1px) rotate(1deg); }
+  90% { transform: translate(2px, 1px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+.speeder-loader .longfazers {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+.speeder-loader .longfazers span {
+  background: #f5f5f3;
+  width: 20%;
+  height: 2px;
+  position: absolute;
+}
+.speeder-loader .longfazers span:nth-child(1) {
+  animation: 0.6s linear -5s infinite lf;
+  top: 20%;
+}
+.speeder-loader .longfazers span:nth-child(2) {
+  animation: 0.8s linear -1s infinite lf2;
+  top: 40%;
+}
+.speeder-loader .longfazers span:nth-child(3) {
+  animation: 0.6s linear infinite lf3;
+  top: 60%;
+}
+.speeder-loader .longfazers span:nth-child(4) {
+  animation: 0.5s linear -3s infinite lf4;
+  top: 80%;
+}
+@keyframes lf {
+  0% { left: 200%; }
+  100% { opacity: 0; left: -200%; }
+}
+@keyframes lf2 {
+  0% { left: 200%; }
+  100% { opacity: 0; left: -200%; }
+}
+@keyframes lf3 {
+  0% { left: 200%; }
+  100% { opacity: 0; left: -100%; }
+}
+@keyframes lf4 {
+  0% { left: 200%; }
+  100% { opacity: 0; left: -100%; }
+}
+
+/* =========================================================
+   5. INTERACTIVE BUTTON & CARD EFFECTS
+========================================================== */
+/* Button Shimmer Sweep Effect */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+.btn-shine:after {
+  content: "";
+  pointer-events: none;
+  background: linear-gradient(120deg, transparent 30%, rgba(255, 255, 255, 0.6) 50%, transparent 70%);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-130%);
+}
+.btn-shine:hover:after {
+  animation: 0.8s btn-shine-sweep ease-in-out;
+}
+@keyframes btn-shine-sweep {
+  0% { transform: translate(-130%); }
+  100% { transform: translate(130%); }
+}
+
+/* Conic Border Beam Hover Effect */
+@property --border-beam-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+.border-beam {
+  background: conic-gradient(from var(--border-beam-angle), transparent 0%, rgb(var(--color-gold)) 10%, transparent 22%);
+  animation: 3.5s linear infinite border-beam-spin;
+}
+@keyframes border-beam-spin {
+  to { --border-beam-angle: 360deg; }
+}
+
+/* Live Availability Pulsing Green Indicator */
+.dot-loop {
+  animation: 1.8s ease-out infinite dot-loop;
+}
+@keyframes dot-loop {
+  0% { box-shadow: 0 0 rgba(74, 222, 128, 0.6); }
+  70% { box-shadow: 0 0 0 7px rgba(74, 222, 128, 0); }
+  100% { box-shadow: 0 0 rgba(74, 222, 128, 0); }
+}
+
+/* Scroll Dot Indicator */
+@keyframes scroll-dot {
+  0% { transform: translateY(0); opacity: 0; }
+  40% { opacity: 1; }
+  80% { transform: translateY(12px); opacity: 0; }
+  100% { opacity: 0; }
+}
+.animate-scroll-dot {
+  animation: scroll-dot 2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+/* Subtle Card Wave Graphic */
+.card-wave {
+  background-image: radial-gradient(circle at 100% 100%, rgba(201, 162, 39, 0.15) 0%, transparent 60%);
+}
+
+/* Shadows & Glows */
+.shadow-glow-sm {
+  box-shadow: 0 0 20px 0 rgba(255, 255, 255, 0.06);
+}
+.shadow-glow-gold {
+  box-shadow: 0 0 30px var(--color-gold-glow);
+}
+
+/* Modal Animations */
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+.animate-modal-in {
+  animation: modal-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Lightbox Modal */
+#lightbox-modal.active,
+#project-modal.active {
+  display: flex !important;
+}
+
+/* Gallery image zoom hover */
+.gallery-card img,
+.gallery-card .gallery-visual {
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.gallery-card:hover img,
+.gallery-card:hover .gallery-visual {
+  transform: scale(1.06);
+}
+
+/* Accessible reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  :before,
+  :after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

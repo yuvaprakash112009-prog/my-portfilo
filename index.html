@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0a0a0a" />
+
+  <!-- Pre-paint Theme script to prevent flash -->
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('webcore_theme');
+        var theme = saved === 'light' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+
+  <!-- Primary SEO -->
+  <title>WEB CORE — Personal Portfolio of Yuvaprakash | Web Developer</title>
+  <meta
+    name="description"
+    content="Official personal portfolio of Yuvaprakash, Web Developer and founder of Web Core based in Tamil Nadu, India. Specializing in frontend development, modern UI design, and high-impact websites."
+  />
+  <meta name="author" content="Yuvaprakash - Web Core" />
+  <meta
+    name="keywords"
+    content="Yuvaprakash, Web Core, Web Developer, Bishop Heber College, Trichy, Tamil Nadu, Frontend Developer, HTML, CSS, JavaScript, UI Design, Portfolio"
+  />
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Web Core" />
+  <meta property="og:title" content="WEB CORE — Personal Portfolio of Yuvaprakash | Web Developer" />
+  <meta
+    property="og:description"
+    content="Modern websites and digital experiences crafted with creativity, performance, and attention to detail by Yuvaprakash."
+  />
+
+  <!-- Typography: Blinker (Headings) + Sulphur Point (Subtitles/Intros) + Poppins (UI/Body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Blinker:wght@400;600;700;800&family=Poppins:wght@300;400;500;600;700&family=Sulphur+Point:wght@300;400;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Tailwind CSS CDN for instant, zero-build utility rendering -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: ['selector', '[data-theme="dark"]'],
+      theme: {
+        extend: {
+          colors: {
+            black: 'rgb(var(--color-black) / <alpha-value>)',
+            charcoal: 'rgb(var(--color-charcoal) / <alpha-value>)',
+            charcoal2: 'rgb(var(--color-charcoal2) / <alpha-value>)',
+            offwhite: 'rgb(var(--color-offwhite) / <alpha-value>)',
+            gold: {
+              DEFAULT: 'rgb(var(--color-gold) / <alpha-value>)',
+              600: 'rgb(var(--color-gold-600) / <alpha-value>)',
+              700: 'rgb(var(--color-gold-700) / <alpha-value>)'
+            }
+          },
+          fontFamily: {
+            heading: ['Blinker', 'Poppins', 'sans-serif'],
+            intro: ['Sulphur Point', 'Poppins', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="bg-black text-offwhite antialiased">
+
+  <!-- =========================================================
+       PRELOADER (SPEEDER LOADER MATCHING REFERENCE DESIGN)
+  ========================================================== -->
+  <div id="preloader" class="speeder-loader fixed inset-0 z-50 flex flex-col items-center justify-center bg-black transition-opacity duration-700" aria-label="Loading portfolio">
+    <div class="loader-wrap relative">
+      <div class="loader">
+        <span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+        <div class="base">
+          <span></span>
+          <div class="face"></div>
+        </div>
+      </div>
+      <div class="longfazers">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    <div class="preloader-text mt-16 flex items-center gap-3">
+      <span class="h-1.5 w-1.5 rounded-full bg-gold animate-pulse"></span>
+      <span class="font-heading text-xs uppercase tracking-[0.28em] text-gray-400">WEB CORE &bull; INITIALIZING PORTFOLIO</span>
+    </div>
+  </div>
+
+  <!-- Noise Overlay for subtle cinematic film grain -->
+  <div class="noise-overlay pointer-events-none fixed inset-0 z-[1] opacity-50 mix-blend-overlay" aria-hidden="true"></div>
+
+  <!-- =========================================================
+       HEADER / NAVBAR
+  ========================================================== -->
+  <header id="site-header" class="fixed inset-x-0 top-0 z-40 transition-[background-color,border-color,backdrop-filter] duration-300" data-theme="dark">
+    <nav class="max-shell container-px flex h-16 items-center justify-between md:h-20" aria-label="Primary navigation">
+      <!-- Brand Logo & Live Status -->
+      <a href="#home" class="group flex items-center gap-3" aria-label="WEB CORE Home">
+        <span class="relative shrink-0 transition-transform duration-300 ease-out group-hover:-rotate-6 group-hover:scale-110">
+          <div class="flex h-11 w-11 items-center justify-center rounded-full bg-charcoal2 font-heading text-base font-bold tracking-wider text-offwhite ring-1 ring-white/20 shadow-glow-sm">
+            WC
+          </div>
+          <span class="dot-loop absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full border-2 border-black bg-green-400" title="Available for projects" aria-hidden="true"></span>
+        </span>
+        <div class="flex flex-col">
+          <span class="whitespace-nowrap font-heading text-lg font-bold tracking-tight text-offwhite md:text-xl">
+            WEB CORE
+          </span>
+          <span class="hidden font-intro text-[0.68rem] uppercase tracking-[0.16em] text-gray-500 sm:inline-block">
+            by Yuvaprakash
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <div class="flex items-center gap-3 md:gap-6">
+        <div class="hidden items-center gap-6 md:flex lg:gap-8">
+          <ul class="flex items-center gap-6 text-[15px] font-medium lg:gap-8" id="desktop-nav-links">
+            <li>
+              <a href="#home" class="nav-item group relative inline-flex items-center py-1 text-gray-400 transition-colors duration-300 hover:text-gold active text-gold" data-nav="home">
+                Home
+                <span class="nav-underline absolute -bottom-0.5 left-0 h-px w-full bg-gold transition-all duration-300"></span>
+              </a>
+            </li>
+            <li>
+              <a href="#services" class="nav-item group relative inline-flex items-center py-1 text-gray-400 transition-colors duration-300 hover:text-gold" data-nav="services">
+                Services
+                <span class="nav-underline absolute -bottom-0.5 left-0 h-px w-0 bg-gold transition-all duration-300 group-hover:w-full"></span>
+              </a>
+            </li>
+            <li>
+              <a href="#about" class="nav-item group relative inline-flex items-center py-1 text-gray-400 transition-colors duration-300 hover:text-gold" data-nav="about">
+                About
+                <span class="nav-underline absolute -bottom-0.5 left-0 h-px w-0 bg-gold transition-all duration-300 group-hover:w-full"></span>
+              </a>
+            </li>
+            <li>
+              <a href="#skills" class="nav-item group relative inline-flex items-center py-1 text-gray-400 transition-colors duration-300 hover:text-gold" data-nav="skills">
+                Skills
+                <span class="nav-underline absolute -bottom-0.5 left-0 h-px w-0 bg-gold transition-all duration-300 group-hover:w-full"></span>
+              </a>
+            </li>
+            <li>
+              <a href="#journey" class="nav-item group relative inline-flex items-center py-1 text-gray-400 transition-colors duration-300 hover:text-gold" data-nav="journey">
+                Journey
+                <span class="nav-underline absolute -bottom-0.5 left-0 h-px w-0 bg-gold transition-all duration-300 group-hover:w-full"></span>
+              </a>
+            </li>
+            <li>
+              <a href="#contact" class="nav-item group relative inline-flex items-center py-1 text-gray-400 transition-colors duration-300 hover:text-gold" data-nav="contact">
+                Contact
+                <span class="nav-underline absolute -bottom-0.5 left-0 h-px w-0 bg-gold transition-all duration-300 group-hover:w-full"></span>
+              </a>
+            </li>
+          </ul>
+
+          <span class="h-4 w-px bg-white/20" aria-hidden="true"></span>
+
+          <!-- Header Social Icons -->
+          <div class="flex items-center gap-3">
+            <a href="mailto:yuvaprakash112009@gmail.com" class="text-gray-300 transition-transform duration-300 ease-out hover:-translate-y-0.5 hover:rotate-6 hover:scale-125 hover:text-gold" aria-label="Send an email to Yuvaprakash" title="Email">
+              <svg class="h-[18px] w-[18px]" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+              </svg>
+            </a>
+            <a href="https://wa.me/918754012209" target="_blank" rel="noopener noreferrer" class="text-gray-300 transition-transform duration-300 ease-out hover:-translate-y-0.5 hover:rotate-6 hover:scale-125 hover:text-gold" aria-label="Message on WhatsApp" title="WhatsApp">
+              <svg class="h-[18px] w-[18px]" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path>
+              </svg>
+            </a>
+            <a href="https://www.instagram.com/website._.core/" target="_blank" rel="noopener noreferrer" class="text-gray-300 transition-transform duration-300 ease-out hover:-translate-y-0.5 hover:rotate-6 hover:scale-125 hover:text-gold" aria-label="Instagram Profile" title="Instagram">
+              <svg class="h-[18px] w-[18px]" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="text-gray-300 transition-transform duration-300 ease-out hover:-translate-y-0.5 hover:rotate-6 hover:scale-125 hover:text-gold" aria-label="GitHub Profile" title="GitHub">
+              <svg class="h-[18px] w-[18px]" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+                <path d="M9 18c-4.51 2-5-2-7-2"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Theme Toggle Button -->
+        <button id="theme-toggle" type="button" class="relative flex h-9 w-9 items-center justify-center rounded-full border border-gray-800 text-gray-300 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:rotate-12 hover:border-gold hover:text-gold" aria-label="Toggle light and dark theme">
+          <svg id="theme-icon-sun" class="h-[17px] w-[17px] hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+          </svg>
+          <svg id="theme-icon-moon" class="h-[17px] w-[17px]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+          </svg>
+        </button>
+
+        <!-- Mobile Menu Toggle Hamburger -->
+        <button id="mobile-menu-toggle" type="button" class="relative flex h-10 w-10 items-center justify-center rounded-lg border border-gray-800 text-offwhite md:hidden" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span class="hamburger-box relative block h-4 w-6">
+            <span class="hamburger-line line-1 absolute left-0 top-0 h-0.5 w-6 bg-current transition-transform duration-300"></span>
+            <span class="hamburger-line line-2 absolute left-0 top-1.5 h-0.5 w-6 bg-current transition-opacity duration-300"></span>
+            <span class="hamburger-line line-3 absolute left-0 top-3 h-0.5 w-6 bg-current transition-transform duration-300"></span>
+          </span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-menu-drawer" class="mobile-drawer fixed inset-x-0 top-16 hidden border-b border-gray-800 bg-black/95 px-6 py-8 backdrop-blur-xl md:hidden">
+      <ul class="flex flex-col gap-5 text-lg font-semibold text-offwhite">
+        <li><a href="#home" class="mobile-link block text-gray-300 transition-colors hover:text-gold" data-nav="home">Home</a></li>
+        <li><a href="#services" class="mobile-link block text-gray-300 transition-colors hover:text-gold" data-nav="services">Services</a></li>
+        <li><a href="#about" class="mobile-link block text-gray-300 transition-colors hover:text-gold" data-nav="about">About</a></li>
+        <li><a href="#skills" class="mobile-link block text-gray-300 transition-colors hover:text-gold" data-nav="skills">Skills</a></li>
+        <li><a href="#journey" class="mobile-link block text-gray-300 transition-colors hover:text-gold" data-nav="journey">Journey</a></li>
+        <li><a href="#contact" class="mobile-link block text-gray-300 transition-colors hover:text-gold" data-nav="contact">Contact</a></li>
+      </ul>
+      <div class="mt-8 flex items-center gap-4 border-t border-gray-800 pt-6">
+        <a href="mailto:yuvaprakash112009@gmail.com" class="flex h-10 w-10 items-center justify-center rounded-full border border-gray-800 text-gray-300 hover:border-gold hover:text-gold">
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+          </svg>
+        </a>
+        <a href="https://wa.me/918754012209" target="_blank" rel="noopener noreferrer" class="flex h-10 w-10 items-center justify-center rounded-full border border-gray-800 text-gray-300 hover:border-gold hover:text-gold">
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path>
+          </svg>
+        </a>
+        <a href="https://www.instagram.com/website._.core/" target="_blank" rel="noopener noreferrer" class="flex h-10 w-10 items-center justify-center rounded-full border border-gray-800 text-gray-300 hover:border-gold hover:text-gold">
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+          </svg>
+        </a>
+        <a href="#contact" class="mobile-link btn-shine ml-auto inline-flex items-center gap-2 rounded-full bg-gold-600 px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-black hover:bg-gold">
+          Let's Talk
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- =========================================================
+         HERO SECTION (#home)
+    ========================================================== -->
+    <section id="home" data-theme="dark" class="relative flex min-h-[100svh] items-center justify-center overflow-hidden bg-black">
+      <!-- 3D Animated Canvas & Particle Background -->
+      <div class="absolute inset-0 z-0">
+        <canvas id="hero-stars-canvas" class="absolute inset-0 h-full w-full object-cover"></canvas>
+        <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/70 via-black/45 to-black/85"></div>
+        <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_25%,rgba(10,10,10,0.85)_100%)]"></div>
+        <div class="bg-grid-faint pointer-events-none absolute inset-0 opacity-40"></div>
+      </div>
+
+      <!-- Left Watermark on Desktop -->
+      <div class="pointer-events-none absolute bottom-10 left-6 z-10 hidden flex-col items-start gap-2 md:left-10 lg:flex">
+        <span class="h-8 w-px bg-gray-700" aria-hidden="true"></span>
+        <span class="font-heading text-xs uppercase tracking-[0.24em] text-gray-500">WEB CORE / 2026</span>
+      </div>
+
+      <!-- Right Watermark on Desktop -->
+      <div class="pointer-events-none absolute bottom-10 right-6 z-10 hidden flex-col items-end gap-2 md:right-10 lg:flex">
+        <span class="h-8 w-px bg-gray-700" aria-hidden="true"></span>
+        <span class="font-heading text-xs uppercase tracking-[0.24em] text-gray-500">TRICHY &bull; TAMIL NADU</span>
+      </div>
+
+      <!-- Hero Main Content -->
+      <div class="max-shell container-px relative z-10 w-full min-w-0 py-28 text-center sm:py-32">
+        <div class="mx-auto flex w-full min-w-0 max-w-4xl flex-col items-center">
+          
+          <!-- Eyebrow Pill -->
+          <div>
+            <span class="inline-flex max-w-[calc(100vw-2rem)] items-center justify-center gap-2 rounded-full border border-gray-800 bg-charcoal/60 px-4 py-1.5 text-center text-[0.68rem] font-medium uppercase leading-normal tracking-[0.16em] text-gray-300 backdrop-blur-sm sm:max-w-full sm:text-xs sm:tracking-[0.2em] shadow-glow-sm">
+              <span class="h-1.5 w-1.5 rounded-full bg-gold"></span>
+              Web Developer &bull; Web Core &bull; Creative Frontend
+            </span>
+          </div>
+
+          <!-- Hero Main Heading with Split Animated Words -->
+          <h1 class="mt-8 w-full max-w-full text-balance text-center font-heading text-[2.25rem] font-extrabold leading-[1.08] tracking-tight text-offwhite sm:text-5xl sm:leading-[1.05] md:text-6xl lg:text-7xl xl:text-8xl">
+            Building Digital Experiences <span class="bg-gradient-to-r from-gold via-yellow-200 to-gold bg-clip-text text-transparent">That Matter.</span>
+          </h1>
+
+          <!-- Hero Subtitle & Authentic Biography -->
+          <p class="mt-7 max-w-2xl font-intro text-base leading-relaxed text-gray-400 sm:text-lg md:text-xl">
+            Hello, I'm <strong class="text-offwhite font-semibold">Yuvaprakash</strong>, a Web Developer and First-Year B.Sc. Computer Science student at Bishop Heber College, Tiruchirappalli. Under the brand <strong class="text-gold font-semibold">Web Core</strong>, I engineer sleek, modern frontend websites and user interfaces with a drive toward building a lasting digital business.
+          </p>
+
+          <!-- Action Buttons -->
+          <div class="mt-10 flex flex-col items-center gap-4 sm:flex-row">
+            <a href="#services" class="btn-shine btn-primary group relative inline-flex items-center justify-center gap-2.5 rounded-full bg-gold-600 px-8 py-4 font-heading text-sm font-semibold tracking-wide text-black transition-all duration-300 hover:bg-gold hover:shadow-[0_0_30px_var(--color-gold-glow)]">
+              Explore Services
+              <svg class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </a>
+            <a href="#contact" class="btn-shine btn-secondary group relative inline-flex items-center justify-center gap-2 rounded-full border border-gray-600 px-8 py-4 font-heading text-sm font-medium tracking-wide text-offwhite transition-all duration-300 hover:border-offwhite hover:bg-offwhite hover:text-black hover:shadow-[0_0_24px_rgba(245,245,243,0.18)]">
+              Contact Me
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll Down Indicator -->
+      <div class="absolute inset-x-0 bottom-8 z-10 flex justify-center">
+        <a href="#services" class="group flex flex-col items-center gap-2 text-gray-500 transition-colors hover:text-offwhite focus-visible:outline-none" aria-label="Scroll to Explore Services">
+          <span class="text-[0.7rem] font-medium uppercase tracking-[0.24em]">Scroll to Explore</span>
+          <span class="flex h-9 w-6 items-start justify-center rounded-full border border-gray-800 p-1.5 transition-colors group-hover:border-gray-500">
+            <span class="block h-1.5 w-1 rounded-full bg-offwhite/80 animate-scroll-dot"></span>
+          </span>
+        </a>
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+         SERVICES SECTION (#services)
+    ========================================================== -->
+    <section id="services" class="relative overflow-hidden border-t border-gray-800 bg-charcoal/30 py-24 md:py-32">
+      <div class="pointer-events-none absolute -left-20 top-1/4 h-96 w-96 rounded-full bg-gold/[0.04] blur-3xl"></div>
+      <div class="pointer-events-none absolute -right-20 bottom-1/4 h-96 w-96 rounded-full bg-white/[0.03] blur-3xl"></div>
+
+      <div class="relative z-10 max-shell container-px">
+        <div class="mx-auto flex max-w-2xl flex-col items-center text-center">
+          <span class="inline-flex items-center gap-2 rounded-full border border-gray-800 bg-charcoal/60 px-4 py-1.5 text-[0.68rem] font-medium uppercase tracking-[0.18em] text-gray-400">
+            <span class="h-1.5 w-1.5 rounded-full bg-gold"></span>
+            Services
+          </span>
+          <h2 class="mt-6 font-heading text-3xl font-bold tracking-tight text-offwhite sm:text-4xl md:text-5xl">
+            What We Do
+          </h2>
+          <p class="mt-4 font-intro text-base leading-relaxed text-gray-400 sm:text-lg">
+            Focused digital development capabilities tailored to help individuals, businesses, and ventures build a standout web footprint.
+          </p>
+        </div>
+
+        <!-- 6 Services Grid -->
+        <div class="mt-16 grid gap-6 sm:grid-cols-2 md:gap-8 lg:grid-cols-3">
+          
+          <!-- Card 01 -->
+          <article class="service-card group relative flex h-full flex-col overflow-hidden rounded-2xl border border-gray-800 bg-charcoal p-8 transition-all duration-300 hover:-translate-y-1 hover:border-gray-600 hover:shadow-[0_16px_44px_-14px_rgba(245,245,243,0.16)]">
+            <div class="card-wave pointer-events-none absolute inset-0 z-0 overflow-hidden opacity-[0.08] transition-opacity duration-300 group-hover:opacity-[0.18]"></div>
+            <span class="pointer-events-none absolute -right-2 -top-8 z-0 select-none font-heading text-[7rem] font-bold leading-none text-offwhite/[0.03] transition-colors duration-300 group-hover:text-offwhite/[0.06]" aria-hidden="true">01</span>
+            
+            <div class="relative z-10 flex items-center justify-between">
+              <span class="flex h-12 w-12 items-center justify-center rounded-xl border border-gray-800 bg-charcoal2 text-offwhite transition-all duration-300 group-hover:-rotate-6 group-hover:border-gold group-hover:text-gold group-hover:shadow-[0_0_20px_var(--color-gold-glow)]">
+                <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                  <path d="m18 16 4-4-4-4"></path>
+                  <path d="m6 8-4 4 4 4"></path>
+                  <path d="m14.5 4-5 16"></path>
+                </svg>
+              </span>
+              <span class="text-sm font-semibold tracking-[0.2em] text-gray-600">01</span>
+            </div>
+
+            <h3 class="relative z-10 mt-6 font-heading text-xl font-bold tracking-tight text-offwhite transition-colors duration-300 group-hover:text-gold">
+              Web Design &amp; Development
+            </h3>
+            <p class="relative z-10 mt-3 font-intro text-sm leading-relaxed text-gray-400">
+              Modern, responsive, and high-performance websites built from scratch around your brand's unique identity.
+            </p>
+          </article>
+
+          <!-- Card 02 -->
+          <article class="service-card group relative flex h-full flex-col overflow-hidden rounded-2xl border border-gray-800 bg-charcoal p-8 transition-all duration-300 hover:-translate-y-1 hover:border-gray-600 hover:shadow-[0_16px_44px_-14px_rgba(245,245,243,0.16)]">
+            <div class="card-wave pointer-events-none absolute inset-0 z-0 overflow-hidden opacity-[0.08] transition-opacity duration-300 group-hover:opacity-[0.18]"></div>
+            <span class="pointer-events-none absolute -right-2 -top-8 z-0 select-none font-heading text-[7rem] font-bold leading-none text-offwhite/[0.03] transition-colors duration-300 group-hover:text-offwhite/[0.06]" aria-hidden="true">02</span>
+            
+            <div class="relative z-10 flex items-center justify-between">
+              <span class="flex h-12 w-12 items-center justify-center rounded-xl border border-gray-800 bg-charcoal2 text-offwhite transition-all duration-300 group-hover:-rotate-6 group-hover:border-gold group-hover:text-gold group-hover:shadow-[0_0_20px_var(--color-gold-glow)]">
+                <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                  <path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                  <rect width="20" height="14" x="2" y="6" rx="2"></rect>
+                </svg>
+              </span>
+              <span class="text-sm font-semibold tracking-[0.2em] text-gray-600">02</span>
+            </div>
+
+            <h3 class="relative z-10 mt-6 font-heading text-xl font-bold tracking-tight text-offwhite transition-colors duration-300 group-hover:text-gold">
+              Business Websites
+            </h3>
+            <p class="relative z-10 mt-3 font-intro text-sm leading-relaxed text-gray-400">
+              Professional websites that help businesses establish credibility, showcase services, and generate verified client enquiries.
+            </p>
+          </article>
+
+          <!-- Card 03 -->
+          <article class="service-card group relative flex h-full flex-col overflow-hidden rounded-2xl border border-gray-800 bg-charcoal p-8 transition-all duration-300 hover:-translate-y-1 hover:border-gray-600 hover:shadow-[0_16px_44px_-14px_rgba(245,245,243,0.16)]">
+            <div class="card-wave pointer-events-none absolute inset-0 z-0 overflow-hidden opacity-[0.08] transition-opacity duration-300 group-hover:opacity-[0.18]"></div>
+            <span class="pointer-events-none absolute -right-2 -top-8 z-0 select-none font-heading text-[7rem] font-bold leading-none text-offwhite/[0.03] transition-colors duration-300 group-hover:text-offwhite/[0.06]" aria-hidden="true">03</span>
+            
+            <div class="relative z-10 flex items-center justify-between">
+              <span class="flex h-12 w-12 items-center justify-center rounded-xl border border-gray-800 bg-charcoal2 text-offwhite transition-all duration-300 group-hover:-rotate-6 group-hover:border-gold group-hover:text-gold group-hover:shadow-[0_0_20px_var(--color-gold-glow)]">
+                <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                  <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path>
+                  <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path>
+                </svg>
+              </span>
+              <span class="text-sm font-semibold tracking-[0.2em] text-gray-600">03</span>
+            </div>
+
+            <h3 class="relative z-10 mt-6 font-heading text-xl font-bold tracking-tight text-offwhite transition-colors duration-300 group-hover:text-gold">
+              Landing Pages
+            </h3>
+            <p class="relative z-10 mt-3 font-intro text-sm leading-relaxed text-gray-400">
+              High-converting landing pages laser-focused on specific marketing campaigns, product showcases, and immediate leads.
+            </p>
+          </article>
+
+          <!-- Card 04 -->
+          <article class="service-card group relative flex h-full flex-col overflow-hidden rounded-2xl border border-gray-800 bg-charcoal p-8 transition-all duration-300 hover:-translate-y-1 hover:border-gray-600 hover:shadow-[0_16px_44px_-14px_rgba(245,245,243,0.16)]">
+            <div class="card-wave pointer-events-none absolute inset-0 z-0 overflow-hidden opacity-[0.08] transition-opacity duration-300 group-hover:opacity-[0.18]"></div>
+            <span class="pointer-events-none absolute -right-2 -top-8 z-0 select-none font-heading text-[7rem] font-bold leading-none text-offwhite/[0.03] transition-colors duration-300 group-hover:text-offwhite/[0.06]" aria-hidden="true">04</span>
+            
+            <div class="relative z-10 flex items-center justify-between">
+              <span class="flex h-12 w-12 items-center justify-center rounded-xl border border-gray-800 bg-charcoal2 text-offwhite transition-all duration-300 group-hover:-rotate-6 group-hover:border-gold group-hover:text-gold group-hover:shadow-[0_0_20px_var(--color-gold-glow)]">
+                <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                  <path d="m6.5 6.5 11 11"></path>
+                  <path d="m21 21-1-1"></path>
+                  <path d="m3 3 1 1"></path>
+                  <path d="m18 22 4-4"></path>
+                  <path d="m2 6 4-4"></path>
+                  <path d="m3 10 7-7"></path>
+                  <path d="m14 21 7-7"></path>
+                </svg>
+              </span>
+              <span class="text-sm font-semibold tracking-[0.2em] text-gray-600">04</span>
+            </div>
+
+            <h3 class="relative z-10 mt-6 font-heading text-xl font-bold tracking-tight text-offwhite transition-colors duration-300 group-hover:text-gold">
+              Gym &amp; Fitness Websites
+            </h3>
+            <p class="relative z-10 mt-3 font-intro text-sm leading-relaxed text-gray-400">
+              Bold, high-energy websites for fitness studios and gyms—built to display trainers, packages, schedules, and drive sign-ups.
+            </p>
+          </article>
+
+          <!-- Card 05 -->
+          <article class="service-card group relative flex h-full flex-col overflow-hidden rounded-2xl border border-gray-800 bg-charcoal p-8 transition-all duration-300 hover:-translate-y-1 hover:border-gray-600 hover:shadow-[0_16px_44px_-14px_rgba(245,245,243,0.16)]">
+            <div class="card-wave pointer-events-none absolute inset-0 z-0 overflow-hidden opacity-[0.08] transition-opacity duration-300 group-hover:opacity-[0.18]"></div>
+            <span class="pointer-events-none absolute -right-2 -top-8 z-0 select-none font-heading text-[7rem] font-bold leading-none text-offwhite/[0.03] transition-colors duration-300 group-hover:text-offwhite/[0.06]" aria-hidden="true">05</span>
+            
+            <div class="relative z-10 flex items-center justify-between">
+              <span class="flex h-12 w-12 items-center justify-center rounded-xl border border-gray-800 bg-charcoal2 text-offwhite transition-all duration-300 group-hover:-rotate-6 group-hover:border-gold group-hover:text-gold group-hover:shadow-[0_0_20px_var(--color-gold-glow)]">
+                <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                  <rect width="18" height="18" x="3" y="3" rx="2"></rect>
+                  <circle cx="12" cy="10" r="3"></circle>
+                  <path d="M7 21v-2a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2"></path>
+                </svg>
+              </span>
+              <span class="text-sm font-semibold tracking-[0.2em] text-gray-600">05</span>
+            </div>
+
+            <h3 class="relative z-10 mt-6 font-heading text-xl font-bold tracking-tight text-offwhite transition-colors duration-300 group-hover:text-gold">
+              Portfolio Websites
+            </h3>
+            <p class="relative z-10 mt-3 font-intro text-sm leading-relaxed text-gray-400">
+              Personal and professional portfolios that elegantly showcase creative work, bio data, case studies, and career milestones.
+            </p>
+          </article>
+
+          <!-- Card 06 -->
+          <article class="service-card group relative flex h-full flex-col overflow-hidden rounded-2xl border border-gray-800 bg-charcoal p-8 transition-all duration-300 hover:-translate-y-1 hover:border-gray-600 hover:shadow-[0_16px_44px_-14px_rgba(245,245,243,0.16)]">
+            <div class="card-wave pointer-events-none absolute inset-0 z-0 overflow-hidden opacity-[0.08] transition-opacity duration-300 group-hover:opacity-[0.18]"></div>
+            <span class="pointer-events-none absolute -right-2 -top-8 z-0 select-none font-heading text-[7rem] font-bold leading-none text-offwhite/[0.03] transition-colors duration-300 group-hover:text-offwhite/[0.06]" aria-hidden="true">06</span>
+            
+            <div class="relative z-10 flex items-center justify-between">
+              <span class="flex h-12 w-12 items-center justify-center rounded-xl border border-gray-800 bg-charcoal2 text-offwhite transition-all duration-300 group-hover:-rotate-6 group-hover:border-gold group-hover:text-gold group-hover:shadow-[0_0_20px_var(--color-gold-glow)]">
+                <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                  <path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"></path>
+                </svg>
+              </span>
+              <span class="text-sm font-semibold tracking-[0.2em] text-gray-600">06</span>
+            </div>
+
+            <h3 class="relative z-10 mt-6 font-heading text-xl font-bold tracking-tight text-offwhite transition-colors duration-300 group-hover:text-gold">
+              Maintenance &amp; Deployment
+            </h3>
+            <p class="relative z-10 mt-3 font-intro text-sm leading-relaxed text-gray-400">
+              Basic website maintenance, speed optimization, hosting deployment on Vercel/GitHub Pages, and domain setup assistance.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+         ABOUT ME & STRUCTURED BIO-DATA SECTION (#about)
+    ========================================================== -->
+    <section id="about" class="relative border-t border-gray-800 bg-charcoal/30 py-24 md:py-32">
+      <div class="max-shell container-px">
+        
+        <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+          
+          <!-- Left Column: Visual Typography Card (Matches reference "RK" card) -->
+          <div class="relative flex aspect-square items-center justify-center overflow-hidden rounded-3xl border border-gray-800 bg-gradient-to-br from-charcoal2 via-charcoal to-black lg:aspect-[4/5] shadow-2xl">
+            <div class="bg-grid-faint absolute inset-0 opacity-40"></div>
+            <div class="absolute -left-10 -top-10 h-56 w-56 rounded-full bg-white/[0.04] blur-3xl"></div>
+            <div class="absolute -bottom-10 -right-10 h-64 w-64 rounded-full bg-gold/[0.05] blur-3xl"></div>
+            
+            
+<!-- Profile Photo -->
+<img 
+  src="yuvaprakash.jpg"
+  alt="Yuvaprakash - Web Developer, Web Core"
+  class="absolute inset-0 h-full w-full object-cover object-top"
+  loading="lazy"
+/>
+<!-- Dark gradient so bottom text stays readable -->
+<div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30"></div>
+            <span class="absolute bottom-8 left-8 font-intro text-xs font-medium uppercase tracking-[0.24em] text-gray-500">
+              WEB CORE &bull; DIGITAL SERVICES
+            </span>
+            <span class="absolute top-8 right-8 font-intro text-xs font-medium uppercase tracking-[0.24em] text-gold">
+              FOUNDED 2025
+            </span>
+          </div>
+
+          <!-- Right Column: About Content & Highlights -->
+          <div>
+            <span class="inline-flex items-center gap-2 rounded-full border border-gray-800 bg-charcoal/60 px-4 py-1.5 text-[0.68rem] font-medium uppercase tracking-[0.18em] text-gray-400">
+              <span class="h-1.5 w-1.5 rounded-full bg-gold"></span>
+              About Me
+            </span>
+
+            <h2 class="mt-6 text-balance font-heading text-3xl font-bold tracking-tight text-offwhite sm:text-4xl md:text-5xl md:leading-[1.08]">
+              Built With Purpose. Driven By Technical Craft.
+            </h2>
+
+            <p class="mt-6 font-intro text-base leading-relaxed text-gray-400 md:text-lg">
+              I am <strong class="text-offwhite font-medium">Yuvaprakash</strong>, a web developer and computer science student at Bishop Heber College in Tiruchirappalli, Tamil Nadu. I founded <strong class="text-gold font-medium">Web Core</strong> to channel my passion for web development into building polished digital experiences for real-world businesses.
+            </p>
+
+            <p class="mt-4 font-intro text-sm leading-relaxed text-gray-400 sm:text-base">
+              My focus is centered on frontend engineering, user interface design, and modern website deployment. Combining academic computer science grounding with hands-on development workflows, my ambition is to evolve Web Core into a thriving, full-scale web development business and become a successful technology entrepreneur.
+            </p>
+
+            <!-- Highlights / Value Propositions -->
+            <div class="mt-10 space-y-4">
+              
+              <!-- Highlight 1 -->
+              <div class="group flex items-start gap-4">
+                <span class="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl border border-gray-800 bg-charcoal text-offwhite transition-all duration-300 group-hover:-rotate-6 group-hover:border-gold group-hover:text-gold group-hover:shadow-[0_0_16px_rgba(245,245,243,0.16)]">
+                  <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                    <circle cx="13.5" cy="6.5" r=".5" fill="currentColor"></circle>
+                    <circle cx="17.5" cy="10.5" r=".5" fill="currentColor"></circle>
+                    <circle cx="8.5" cy="7.5" r=".5" fill="currentColor"></circle>
+                    <circle cx="6.5" cy="12.5" r=".5" fill="currentColor"></circle>
+                    <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.563-2.512 5.563-5.563C22 6.5 17.5 2 12 2Z"></path>
+                  </svg>
+                </span>
+                <div>
+                  <h3 class="font-heading text-base font-bold text-offwhite">Design-Led Frontend Engineering</h3>
+                  <p class="mt-0.5 font-intro text-sm text-gray-400">Balancing clean visual aesthetics, intuitive navigation, and responsive typography.</p>
+                </div>
+              </div>
+
+              <!-- Highlight 2 -->
+              <div class="group flex items-start gap-4">
+                <span class="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl border border-gray-800 bg-charcoal text-offwhite transition-all duration-300 group-hover:-rotate-6 group-hover:border-gold group-hover:text-gold group-hover:shadow-[0_0_16px_rgba(245,245,243,0.16)]">
+                  <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                    <rect width="16" height="16" x="4" y="4" rx="2"></rect>
+                    <rect width="6" height="6" x="9" y="9" rx="1"></rect>
+                    <path d="M15 2v2M9 2v2M20 15h2M20 9h2M9 20v2M15 20v2M2 9h2M2 15h2"></path>
+                  </svg>
+                </span>
+                <div>
+                  <h3 class="font-heading text-base font-bold text-offwhite">Solid Web Foundations</h3>
+                  <p class="mt-0.5 font-intro text-sm text-gray-400">Built using semantic HTML5, modern CSS3 layout engines, and interactive JavaScript.</p>
+                </div>
+              </div>
+
+              <!-- Highlight 3 -->
+              <div class="group flex items-start gap-4">
+                <span class="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl border border-gray-800 bg-charcoal text-offwhite transition-all duration-300 group-hover:-rotate-6 group-hover:border-gold group-hover:text-gold group-hover:shadow-[0_0_16px_rgba(245,245,243,0.16)]">
+                  <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                    <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                  </svg>
+                </span>
+                <div>
+                  <h3 class="font-heading text-base font-bold text-offwhite">Academic Computing Foundation</h3>
+                  <p class="mt-0.5 font-intro text-sm text-gray-400">First-Year B.Sc. Computer Science student at Bishop Heber College, Tiruchirappalli.</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- =========================================================
+             STRUCTURED BIO-DATA PANEL (PHASE 08 SPECIFICATION)
+        ========================================================== -->
+        <div class="mt-20 rounded-2xl border border-gray-800 bg-charcoal/50 p-6 backdrop-blur md:p-10">
+          <div class="flex flex-col gap-2 border-b border-gray-800 pb-6 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <span class="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-gold">Official Bio-Data</span>
+              <h3 class="mt-1 font-heading text-2xl font-bold tracking-tight text-offwhite">
+                Profile &amp; Background Details
+              </h3>
+            </div>
+            <span class="w-fit rounded-full border border-gray-700 bg-charcoal2 px-3 py-1 font-intro text-xs text-gray-400">
+              Verified Information
+            </span>
+          </div>
+
+          <!-- Structured Two-Column Field Grid -->
+          <div class="mt-8 grid gap-6 sm:grid-cols-2 md:gap-8">
+            
+            <!-- Full Name -->
+            <div class="flex items-start gap-3 rounded-xl border border-gray-800/80 bg-charcoal2/40 p-4">
+              <span class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-charcoal text-gold">
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+              </span>
+              <div>
+                <span class="font-intro text-xs uppercase tracking-wider text-gray-500">Full Name</span>
+                <p class="font-heading text-base font-bold text-offwhite">Yuvaprakash</p>
+              </div>
+            </div>
+
+            <!-- Professional Brand -->
+            <div class="flex items-start gap-3 rounded-xl border border-gray-800/80 bg-charcoal2/40 p-4">
+              <span class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-charcoal text-gold">
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"></path>
+                </svg>
+              </span>
+              <div>
+                <span class="font-intro text-xs uppercase tracking-wider text-gray-500">Brand Name</span>
+                <p class="font-heading text-base font-bold text-offwhite">Web Core</p>
+              </div>
+            </div>
+
+            <!-- Profession -->
+            <div class="flex items-start gap-3 rounded-xl border border-gray-800/80 bg-charcoal2/40 p-4">
+              <span class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-charcoal text-gold">
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect>
+                  <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                </svg>
+              </span>
+              <div>
+                <span class="font-intro text-xs uppercase tracking-wider text-gray-500">Profession</span>
+                <p class="font-heading text-base font-bold text-offwhite">Web Developer</p>
+              </div>
+            </div>
+
+            <!-- Education -->
+            <div class="flex items-start gap-3 rounded-xl border border-gray-800/80 bg-charcoal2/40 p-4">
+              <span class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-charcoal text-gold">
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                  <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                </svg>
+              </span>
+              <div>
+                <span class="font-intro text-xs uppercase tracking-wider text-gray-500">Education</span>
+                <p class="font-heading text-base font-bold text-offwhite">B.Sc. Computer Science — First Year</p>
+              </div>
+            </div>
+
+            <!-- College / Institution -->
+            <div class="flex items-start gap-3 rounded-xl border border-gray-800/80 bg-charcoal2/40 p-4">
+              <span class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-charcoal text-gold">
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v4M12 14v4M16 14v4"></path>
+                </svg>
+              </span>
+              <div>
+                <span class="font-intro text-xs uppercase tracking-wider text-gray-500">Institution</span>
+                <p class="font-heading text-base font-bold text-offwhite">Bishop Heber College, Tiruchirappalli</p>
+              </div>
+            </div>
+
+            <!-- Location -->
+            <div class="flex items-start gap-3 rounded-xl border border-gray-800/80 bg-charcoal2/40 p-4">
+              <span class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-charcoal text-gold">
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+              </span>
+              <div>
+                <span class="font-intro text-xs uppercase tracking-wider text-gray-500">Location</span>
+                <p class="font-heading text-base font-bold text-offwhite">Tamil Nadu, India</p>
+              </div>
+            </div>
+
+            <!-- Languages -->
+            <div class="flex items-start gap-3 rounded-xl border border-gray-800/80 bg-charcoal2/40 p-4">
+              <span class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-charcoal text-gold">
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="m5 8 6 6M4 14l6-6 2-3M2 5h12M7 2h1M22 22l-5-10-5 10M14 18h6"></path>
+                </svg>
+              </span>
+              <div>
+                <span class="font-intro text-xs uppercase tracking-wider text-gray-500">Languages Known</span>
+                <p class="font-heading text-base font-bold text-offwhite">Tamil &amp; English</p>
+              </div>
+            </div>
+
+            <!-- Career Goal -->
+            <div class="flex items-start gap-3 rounded-xl border border-gray-800/80 bg-charcoal2/40 p-4">
+              <span class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-charcoal text-gold">
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <circle cx="12" cy="12" r="6"></circle>
+                  <circle cx="12" cy="12" r="2"></circle>
+                </svg>
+              </span>
+              <div>
+                <span class="font-intro text-xs uppercase tracking-wider text-gray-500">Career Goal &amp; Vision</span>
+                <p class="font-heading text-base font-bold text-offwhite">Become a successful entrepreneur and build a professional web development business</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+         SKILLS & TECHNOLOGIES SECTION (#skills)
+    ========================================================== -->
+    <section id="skills" class="relative overflow-hidden border-t border-gray-800 bg-black py-24 md:py-32">
+      <div class="max-shell container-px">
+        
+        <div class="mx-auto flex max-w-2xl flex-col items-center text-center">
+          <span class="inline-flex items-center gap-2 rounded-full border border-gray-800 bg-charcoal/60 px-4 py-1.5 text-[0.68rem] font-medium uppercase tracking-[0.18em] text-gray-400">
+            <span class="h-1.5 w-1.5 rounded-full bg-gold"></span>
+            Expertise
+          </span>
+          <h2 class="mt-6 font-heading text-3xl font-bold tracking-tight text-offwhite sm:text-4xl md:text-5xl">
+            Skills &amp; Technologies
+          </h2>
+          <p class="mt-4 font-intro text-base leading-relaxed text-gray-400 sm:text-lg">
+            Core technical competencies applied to create responsive, accessible, and fast web solutions.
+          </p>
+        </div>
+
+        <div class="mt-16 grid gap-8 md:grid-cols-3">
+          
+          <!-- Category 1: Frontend Development -->
+          <div class="rounded-2xl border border-gray-800 bg-charcoal p-8 transition-colors duration-300 hover:border-gray-600">
+            <div class="flex items-center gap-3 border-b border-gray-800 pb-4">
+              <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-charcoal2 text-gold">
+                <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                  <polyline points="16 18 22 12 16 6"></polyline>
+                  <polyline points="8 6 2 12 8 18"></polyline>
+                </svg>
+              </span>
+              <div>
+                <h3 class="font-heading text-lg font-bold text-offwhite">Frontend Development</h3>
+                <span class="font-intro text-xs text-gray-500">Core Web Technologies</span>
+              </div>
+            </div>
+
+            <div class="mt-6 space-y-4">
+              <!-- Skill: HTML -->
+              <div class="group flex items-center justify-between rounded-xl border border-gray-800/80 bg-charcoal2/50 p-3.5 transition-all hover:border-gold hover:bg-charcoal2">
+                <div class="flex items-center gap-3">
+                  <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-orange-950/40 text-orange-400 font-bold text-xs">HTML</span>
+                  <div>
+                    <span class="font-heading text-sm font-semibold text-offwhite">HTML</span>
+                    <p class="font-intro text-xs text-gray-400">Semantic Structure &amp; SEO</p>
+                  </div>
+                </div>
+                <span class="text-xs font-semibold text-gold">Core Skill</span>
+              </div>
+
+              <!-- Skill: CSS -->
+              <div class="group flex items-center justify-between rounded-xl border border-gray-800/80 bg-charcoal2/50 p-3.5 transition-all hover:border-gold hover:bg-charcoal2">
+                <div class="flex items-center gap-3">
+                  <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-950/40 text-blue-400 font-bold text-xs">CSS</span>
+                  <div>
+                    <span class="font-heading text-sm font-semibold text-offwhite">CSS</span>
+                    <p class="font-intro text-xs text-gray-400">Modern Layouts, Flexbox, Grid</p>
+                  </div>
+                </div>
+                <span class="text-xs font-semibold text-gold">Core Skill</span>
+              </div>
+
+              <!-- Skill: JavaScript -->
+              <div class="group flex items-center justify-between rounded-xl border border-gray-800/80 bg-charcoal2/50 p-3.5 transition-all hover:border-gold hover:bg-charcoal2">
+                <div class="flex items-center gap-3">
+                  <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-yellow-950/40 text-yellow-400 font-bold text-xs">JS</span>
+                  <div>
+                    <span class="font-heading text-sm font-semibold text-offwhite">JavaScript</span>
+                    <p class="font-intro text-xs text-gray-400">DOM, Events, Async Interactivity</p>
+                  </div>
+                </div>
+                <span class="text-xs font-semibold text-gold">Core Skill</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 2: UI Design & User Experience -->
+          <div class="rounded-2xl border border-gray-800 bg-charcoal p-8 transition-colors duration-300 hover:border-gray-600">
+            <div class="flex items-center gap-3 border-b border-gray-800 pb-4">
+              <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-charcoal2 text-gold">
+                <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="m4.93 4.93 4.24 4.24M14.83 14.83l4.24 4.24M14.83 9.17l4.24-4.24M4.93 19.07l4.24-4.24"></path>
+                </svg>
+              </span>
+              <div>
+                <h3 class="font-heading text-lg font-bold text-offwhite">Design &amp; Experience</h3>
+                <span class="font-intro text-xs text-gray-500">Visual &amp; Interaction Craft</span>
+              </div>
+            </div>
+
+            <div class="mt-6 space-y-4">
+              <!-- Skill: UI Design -->
+              <div class="group flex items-center justify-between rounded-xl border border-gray-800/80 bg-charcoal2/50 p-3.5 transition-all hover:border-gold hover:bg-charcoal2">
+                <div class="flex items-center gap-3">
+                  <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-purple-950/40 text-purple-400 font-bold text-xs">UI</span>
+                  <div>
+                    <span class="font-heading text-sm font-semibold text-offwhite">UI Design</span>
+                    <p class="font-intro text-xs text-gray-400">Clean Hierarchy &amp; Aesthetics</p>
+                  </div>
+                </div>
+                <span class="text-xs font-semibold text-gold">Specialty</span>
+              </div>
+
+              <!-- Skill: Responsive Design -->
+              <div class="group flex items-center justify-between rounded-xl border border-gray-800/80 bg-charcoal2/50 p-3.5 transition-all hover:border-gold hover:bg-charcoal2">
+                <div class="flex items-center gap-3">
+                  <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-950/40 text-emerald-400 font-bold text-xs">RWD</span>
+                  <div>
+                    <span class="font-heading text-sm font-semibold text-offwhite">Responsive Design</span>
+                    <p class="font-intro text-xs text-gray-400">Mobile, Tablet, Desktop Fluidity</p>
+                  </div>
+                </div>
+                <span class="text-xs font-semibold text-gold">Proficient</span>
+              </div>
+
+              <!-- Skill: Micro-Interactions -->
+              <div class="group flex items-center justify-between rounded-xl border border-gray-800/80 bg-charcoal2/50 p-3.5 transition-all hover:border-gold hover:bg-charcoal2">
+                <div class="flex items-center gap-3">
+                  <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-pink-950/40 text-pink-400 font-bold text-xs">FX</span>
+                  <div>
+                    <span class="font-heading text-sm font-semibold text-offwhite">Micro-Interactions</span>
+                    <p class="font-intro text-xs text-gray-400">Hover, Transitions &amp; Motion</p>
+                  </div>
+                </div>
+                <span class="text-xs font-semibold text-gold">Proficient</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 3: Tools & Deployment -->
+          <div class="rounded-2xl border border-gray-800 bg-charcoal p-8 transition-colors duration-300 hover:border-gray-600">
+            <div class="flex items-center gap-3 border-b border-gray-800 pb-4">
+              <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-charcoal2 text-gold">
+                <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                </svg>
+              </span>
+              <div>
+                <h3 class="font-heading text-lg font-bold text-offwhite">Tools &amp; Deployment</h3>
+                <span class="font-intro text-xs text-gray-500">Workflow &amp; Production Hosting</span>
+              </div>
+            </div>
+
+            <div class="mt-6 space-y-4">
+              <!-- Skill: GitHub -->
+              <div class="group flex items-center justify-between rounded-xl border border-gray-800/80 bg-charcoal2/50 p-3.5 transition-all hover:border-gold hover:bg-charcoal2">
+                <div class="flex items-center gap-3">
+                  <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-zinc-800 text-white font-bold text-xs">GIT</span>
+                  <div>
+                    <span class="font-heading text-sm font-semibold text-offwhite">GitHub</span>
+                    <p class="font-intro text-xs text-gray-400">Version Control &amp; Repositories</p>
+                  </div>
+                </div>
+                <span class="text-xs font-semibold text-gold">Tool</span>
+              </div>
+
+              <!-- Skill: Website Deployment -->
+              <div class="group flex items-center justify-between rounded-xl border border-gray-800/80 bg-charcoal2/50 p-3.5 transition-all hover:border-gold hover:bg-charcoal2">
+                <div class="flex items-center gap-3">
+                  <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-teal-950/40 text-teal-400 font-bold text-xs">VCL</span>
+                  <div>
+                    <span class="font-heading text-sm font-semibold text-offwhite">Website Deployment</span>
+                    <p class="font-intro text-xs text-gray-400">Vercel, Static Hosting, Domains</p>
+                  </div>
+                </div>
+                <span class="text-xs font-semibold text-gold">Core Skill</span>
+              </div>
+
+              <!-- Skill: VS Code & Workflow -->
+              <div class="group flex items-center justify-between rounded-xl border border-gray-800/80 bg-charcoal2/50 p-3.5 transition-all hover:border-gold hover:bg-charcoal2">
+                <div class="flex items-center gap-3">
+                  <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-sky-950/40 text-sky-400 font-bold text-xs">VSC</span>
+                  <div>
+                    <span class="font-heading text-sm font-semibold text-offwhite">VS Code &amp; AI Tools</span>
+                    <p class="font-intro text-xs text-gray-400">Efficient Modern Engineering</p>
+                  </div>
+                </div>
+                <span class="text-xs font-semibold text-gold">Tool</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+         MY JOURNEY & CAREER GOALS SECTION (#journey)
+    ========================================================== -->
+    <section id="journey" class="relative border-t border-gray-800 bg-black py-24 md:py-32">
+      <div class="max-shell container-px">
+        
+        <div class="mx-auto flex max-w-2xl flex-col items-center text-center">
+          <span class="inline-flex items-center gap-2 rounded-full border border-gray-800 bg-charcoal/60 px-4 py-1.5 text-[0.68rem] font-medium uppercase tracking-[0.18em] text-gray-400">
+            <span class="h-1.5 w-1.5 rounded-full bg-gold"></span>
+            Milestones
+          </span>
+          <h2 class="mt-6 font-heading text-3xl font-bold tracking-tight text-offwhite sm:text-4xl md:text-5xl">
+            My Journey &amp; Career Goals
+          </h2>
+          <p class="mt-4 font-intro text-base leading-relaxed text-gray-400 sm:text-lg">
+            From learning fundamental computing algorithms to building the Web Core brand.
+          </p>
+        </div>
+
+        <!-- Roadmap Timeline -->
+        <div class="relative mt-16 max-w-3xl mx-auto border-l border-gray-800 pl-6 sm:pl-10 space-y-12">
+          
+          <!-- Step 1 -->
+          <div class="relative group">
+            <span class="absolute -left-[31px] sm:-left-[47px] top-1.5 flex h-4 w-4 items-center justify-center rounded-full border-2 border-black bg-gold shadow-glow-sm"></span>
+            <span class="font-heading text-xs uppercase tracking-widest text-gold font-semibold">2024 &bull; Foundation</span>
+            <h3 class="mt-1 font-heading text-xl font-bold text-offwhite sm:text-2xl">B.Sc. Computer Science at Bishop Heber College</h3>
+            <p class="mt-2 font-intro text-sm text-gray-400 leading-relaxed sm:text-base">
+              Commenced higher education in Computer Science at the renowned Bishop Heber College in Tiruchirappalli. Acquired foundational principles in computer systems, logical problem-solving, and web standards.
+            </p>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="relative group">
+            <span class="absolute -left-[31px] sm:-left-[47px] top-1.5 flex h-4 w-4 items-center justify-center rounded-full border-2 border-black bg-gold shadow-glow-sm"></span>
+            <span class="font-heading text-xs uppercase tracking-widest text-gold font-semibold">2025 &bull; Mastery</span>
+            <h3 class="mt-1 font-heading text-xl font-bold text-offwhite sm:text-2xl">Mastering Modern Frontend Engineering</h3>
+            <p class="mt-2 font-intro text-sm text-gray-400 leading-relaxed sm:text-base">
+              Dedicated intensive focus to modern frontend practices: semantic HTML, responsive CSS grid/flexbox layouts, JavaScript DOM architecture, version control with Git/GitHub, and modern UI design principles.
+            </p>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="relative group">
+            <span class="absolute -left-[31px] sm:-left-[47px] top-1.5 flex h-4 w-4 items-center justify-center rounded-full border-2 border-black bg-gold shadow-glow-sm"></span>
+            <span class="font-heading text-xs uppercase tracking-widest text-gold font-semibold">2025 &bull; Launch</span>
+            <h3 class="mt-1 font-heading text-xl font-bold text-offwhite sm:text-2xl">Founding Web Core Brand</h3>
+            <p class="mt-2 font-intro text-sm text-gray-400 leading-relaxed sm:text-base">
+              Established Web Core as an independent web development brand in Trichy, Tamil Nadu. Aimed at providing high-converting, aesthetically distinctive websites for businesses, gyms, clinics, and creators.
+            </p>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="relative group">
+            <span class="absolute -left-[31px] sm:-left-[47px] top-1.5 flex h-4 w-4 items-center justify-center rounded-full border-2 border-black bg-gold shadow-glow-sm"></span>
+            <span class="font-heading text-xs uppercase tracking-widest text-gold font-semibold">Future &bull; Entrepreneurial Ambition</span>
+            <h3 class="mt-1 font-heading text-xl font-bold text-offwhite sm:text-2xl">Building a Thriving Web Development Enterprise</h3>
+            <p class="mt-2 font-intro text-sm text-gray-400 leading-relaxed sm:text-base">
+              My core career aspiration is to become a successful entrepreneur, scaling Web Core into a premier digital agency that crafts digital experiences for ambitious businesses globally.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+         CONTACT US SECTION (#contact)
+    ========================================================== -->
+    <section id="contact" class="relative overflow-hidden border-t border-gray-800 bg-black py-24 md:py-32">
+      <!-- Interactive Dynamic Physics Dot Matrix Canvas (exact clone of reference canvas) -->
+      <canvas id="contact-interactive-canvas" class="pointer-events-none absolute inset-0 h-full w-full opacity-60"></canvas>
+
+      <div class="relative z-10 max-shell container-px">
+        <div class="mx-auto flex max-w-2xl flex-col items-center text-center">
+          <span class="inline-flex items-center gap-2 rounded-full border border-gray-800 bg-charcoal/60 px-4 py-1.5 text-[0.68rem] font-medium uppercase tracking-[0.18em] text-gray-400">
+            <span class="h-1.5 w-1.5 rounded-full bg-gold"></span>
+            Contact Me
+          </span>
+          <h2 class="mt-6 font-heading text-3xl font-bold tracking-tight text-offwhite sm:text-4xl md:text-5xl">
+            Let's Build Something Great Together.
+          </h2>
+          <p class="mt-4 font-intro text-base leading-relaxed text-gray-400 sm:text-lg">
+            Have an idea, a project, or a business that needs a better digital presence? Get in touch directly with Yuvaprakash.
+          </p>
+        </div>
+
+        <div class="mt-16 grid gap-10 lg:grid-cols-[1.4fr_1fr] lg:gap-12">
+          
+          <!-- Contact Form (Left Column) -->
+          <form id="contact-form" class="rounded-2xl border border-gray-800 bg-charcoal/40 p-6 backdrop-blur sm:p-8" novalidate>
+            <div class="grid gap-5 sm:grid-cols-2">
+              
+              <!-- Name -->
+              <div class="flex flex-col gap-2">
+                <label for="name" class="font-intro text-sm font-medium text-gray-400">Your Name *</label>
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  required
+                  autocomplete="name"
+                  placeholder="e.g. John Doe"
+                  class="form-input rounded-xl border border-gray-800 bg-charcoal2 px-4 py-3 font-intro text-sm text-offwhite placeholder:text-gray-600 focus:border-gold focus:outline-none transition-colors"
+                />
+              </div>
+
+              <!-- Email -->
+              <div class="flex flex-col gap-2">
+                <label for="email" class="font-intro text-sm font-medium text-gray-400">Your Email *</label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  required
+                  autocomplete="email"
+                  placeholder="e.g. john@example.com"
+                  class="form-input rounded-xl border border-gray-800 bg-charcoal2 px-4 py-3 font-intro text-sm text-offwhite placeholder:text-gray-600 focus:border-gold focus:outline-none transition-colors"
+                />
+              </div>
+
+              <!-- Phone -->
+              <div class="flex flex-col gap-2">
+                <label for="phone" class="font-intro text-sm font-medium text-gray-400">Phone / WhatsApp</label>
+                <input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  autocomplete="tel"
+                  placeholder="e.g. +91 87540 12209"
+                  class="form-input rounded-xl border border-gray-800 bg-charcoal2 px-4 py-3 font-intro text-sm text-offwhite placeholder:text-gray-600 focus:border-gold focus:outline-none transition-colors"
+                />
+              </div>
+
+              <!-- Service Required Dropdown -->
+              <div class="flex flex-col gap-2">
+                <label for="service" class="font-intro text-sm font-medium text-gray-400">Service Required *</label>
+                <div class="relative">
+                  <select
+                    id="service"
+                    name="service"
+                    required
+                    class="form-input w-full appearance-none rounded-xl border border-gray-800 bg-charcoal2 px-4 py-3 font-intro text-sm text-offwhite focus:border-gold focus:outline-none transition-colors"
+                  >
+                    <option value="" disabled selected>Select a service</option>
+                    <option value="Web Design & Development" class="bg-charcoal">Web Design &amp; Development</option>
+                    <option value="Business Websites" class="bg-charcoal">Business Websites</option>
+                    <option value="Landing Pages" class="bg-charcoal">Landing Pages</option>
+                    <option value="Gym & Fitness Websites" class="bg-charcoal">Gym &amp; Fitness Websites</option>
+                    <option value="Portfolio Websites" class="bg-charcoal">Portfolio Websites</option>
+                    <option value="Website Maintenance & Deployment" class="bg-charcoal">Maintenance &amp; Deployment</option>
+                  </select>
+                  <svg class="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="m6 9 6 6 6-6"></path>
+                  </svg>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Project Details Textarea -->
+            <div class="mt-5 flex flex-col gap-2">
+              <label for="details" class="font-intro text-sm font-medium text-gray-400">Project Details</label>
+              <textarea
+                id="details"
+                name="details"
+                rows="5"
+                placeholder="Tell us a little about your website requirements, goals, or timeline..."
+                class="form-input resize-none rounded-xl border border-gray-800 bg-charcoal2 px-4 py-3 font-intro text-sm text-offwhite placeholder:text-gray-600 focus:border-gold focus:outline-none transition-colors"
+              ></textarea>
+            </div>
+
+            <!-- Form Actions & Feedback -->
+            <div class="mt-6 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <button
+                type="submit"
+                id="submit-btn"
+                class="btn-shine inline-flex items-center justify-center gap-2.5 rounded-full bg-gold-600 px-8 py-3.5 font-heading text-sm font-semibold tracking-wide text-black transition-all duration-300 hover:bg-gold hover:shadow-[0_0_24px_var(--color-gold-glow)]"
+              >
+                <span id="btn-text">Send Inquiry</span>
+                <svg id="btn-arrow" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M5 12h14M12 5l7 7-7 7"></path>
+                </svg>
+                <svg id="btn-spinner" class="h-4 w-4 animate-spin hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M21 12a9 9 0 1 1-6.219-8.56"></path>
+                </svg>
+              </button>
+
+              <div id="form-feedback" class="w-full sm:w-auto font-intro text-sm hidden"></div>
+            </div>
+          </form>
+
+          <!-- Contact Direct Channels (Right Column) -->
+          <div class="flex flex-col gap-4">
+            
+            <!-- Email Card -->
+            <a href="mailto:yuvaprakash112009@gmail.com" class="group flex items-center gap-4 rounded-2xl border border-gray-800 bg-charcoal/40 p-5 transition-all duration-300 hover:border-gray-600 hover:bg-charcoal hover:shadow-[0_8px_30px_rgba(0,0,0,0.5)]">
+              <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-gray-800 bg-charcoal2 text-offwhite transition-transform duration-300 group-hover:scale-110 group-hover:border-gold group-hover:text-gold">
+                <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                  <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                </svg>
+              </span>
+              <div class="min-w-0 flex-1">
+                <span class="text-xs uppercase tracking-wider text-gray-500">Email</span>
+                <p class="truncate font-heading text-sm font-semibold text-offwhite transition-colors group-hover:text-gold">
+                  yuvaprakash112009@gmail.com
+                </p>
+              </div>
+              <svg class="h-4 w-4 text-gray-600 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </a>
+
+            <!-- Phone / Telephone Link -->
+            <a href="tel:+918754012209" class="group flex items-center gap-4 rounded-2xl border border-gray-800 bg-charcoal/40 p-5 transition-all duration-300 hover:border-gray-600 hover:bg-charcoal hover:shadow-[0_8px_30px_rgba(0,0,0,0.5)]">
+              <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-gray-800 bg-charcoal2 text-offwhite transition-transform duration-300 group-hover:scale-110 group-hover:border-gold group-hover:text-gold">
+                <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+              </span>
+              <div class="min-w-0 flex-1">
+                <span class="text-xs uppercase tracking-wider text-gray-500">Phone (Direct Call)</span>
+                <p class="truncate font-heading text-sm font-semibold text-offwhite transition-colors group-hover:text-gold">
+                  +91 87540 12209
+                </p>
+              </div>
+              <svg class="h-4 w-4 text-gray-600 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </a>
+
+            <!-- WhatsApp Link -->
+            <a href="https://wa.me/918754012209" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-4 rounded-2xl border border-gray-800 bg-charcoal/40 p-5 transition-all duration-300 hover:border-gray-600 hover:bg-charcoal hover:shadow-[0_8px_30px_rgba(0,0,0,0.5)]">
+              <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-gray-800 bg-charcoal2 text-offwhite transition-transform duration-300 group-hover:scale-110 group-hover:border-gold group-hover:text-gold">
+                <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                  <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path>
+                </svg>
+              </span>
+              <div class="min-w-0 flex-1">
+                <span class="text-xs uppercase tracking-wider text-gray-500">WhatsApp Chat</span>
+                <p class="truncate font-heading text-sm font-semibold text-offwhite transition-colors group-hover:text-gold">
+                  +91 87540 12209
+                </p>
+              </div>
+              <svg class="h-4 w-4 text-gray-600 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </a>
+
+            <!-- Instagram Link -->
+            <a href="https://www.instagram.com/website._.core/" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-4 rounded-2xl border border-gray-800 bg-charcoal/40 p-5 transition-all duration-300 hover:border-gray-600 hover:bg-charcoal hover:shadow-[0_8px_30px_rgba(0,0,0,0.5)]">
+              <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-gray-800 bg-charcoal2 text-offwhite transition-transform duration-300 group-hover:scale-110 group-hover:border-gold group-hover:text-gold">
+                <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                  <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+              </span>
+              <div class="min-w-0 flex-1">
+                <span class="text-xs uppercase tracking-wider text-gray-500">Instagram</span>
+                <p class="truncate font-heading text-sm font-semibold text-offwhite transition-colors group-hover:text-gold">
+                  @website._.core
+                </p>
+              </div>
+              <svg class="h-4 w-4 text-gray-600 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </a>
+
+            <!-- Location Card -->
+            <div class="flex items-center gap-4 rounded-2xl border border-gray-800 bg-charcoal/40 p-5">
+              <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-gray-800 bg-charcoal2 text-offwhite">
+                <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+              </span>
+              <div class="min-w-0 flex-1">
+                <span class="text-xs uppercase tracking-wider text-gray-500">Location</span>
+                <p class="font-heading text-sm font-semibold text-offwhite">
+                  Tamil Nadu, India
+                </p>
+                <span class="text-xs text-gray-500">Trichy &bull; Remote services available</span>
+              </div>
+            </div>
+
+            <!-- Founder Card -->
+            <div class="flex items-center gap-4 rounded-2xl border border-gray-800 bg-charcoal/40 p-5">
+              <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-gray-800 bg-charcoal2 text-offwhite font-heading font-bold text-sm text-gold">
+                YP
+              </span>
+              <div class="min-w-0 flex-1">
+                <span class="text-xs uppercase tracking-wider text-gray-500">Founder &amp; Developer</span>
+                <p class="font-heading text-sm font-semibold text-offwhite">
+                  Yuvaprakash
+                </p>
+                <span class="text-xs text-gray-500">B.Sc. Computer Science &bull; Web Core</span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <!-- =========================================================
+       FOOTER
+  ========================================================== -->
+  <footer class="border-t border-gray-800 bg-black">
+    <div class="max-shell container-px py-16 md:py-20">
+      
+      <!-- Footer 4-Column Grid -->
+      <div class="grid gap-12 lg:grid-cols-[1.6fr_1fr_1fr_auto]">
+        
+        <!-- Column 1: Brand & Tagline & Socials -->
+        <div class="max-w-sm">
+          <div class="flex items-center gap-3">
+            <div class="flex h-10 w-10 items-center justify-center rounded-full bg-charcoal2 font-heading font-bold text-offwhite ring-1 ring-white/20">
+              WC
+            </div>
+            <span class="font-heading text-xl font-bold tracking-tight text-offwhite">
+              WEB CORE
+            </span>
+          </div>
+
+          <p class="mt-4 font-intro text-sm leading-relaxed text-gray-400">
+            Personal portfolio of Yuvaprakash. Modern, responsive, and performance-driven websites crafted for forward-thinking individuals and businesses.
+          </p>
+
+          <div class="mt-6 flex items-center gap-3">
+            <a href="mailto:yuvaprakash112009@gmail.com" class="flex h-11 w-11 items-center justify-center rounded-full border border-gray-800 text-gray-400 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:rotate-6 hover:scale-110 hover:border-gold hover:text-gold hover:shadow-[0_0_20px_var(--color-gold-glow)]" aria-label="Email" title="Email">
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+              </svg>
+            </a>
+            <a href="https://wa.me/918754012209" target="_blank" rel="noopener noreferrer" class="flex h-11 w-11 items-center justify-center rounded-full border border-gray-800 text-gray-400 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:rotate-6 hover:scale-110 hover:border-gold hover:text-gold hover:shadow-[0_0_20px_var(--color-gold-glow)]" aria-label="WhatsApp" title="WhatsApp">
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path>
+              </svg>
+            </a>
+            <a href="https://www.instagram.com/website._.core/" target="_blank" rel="noopener noreferrer" class="flex h-11 w-11 items-center justify-center rounded-full border border-gray-800 text-gray-400 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:rotate-6 hover:scale-110 hover:border-gold hover:text-gold hover:shadow-[0_0_20px_var(--color-gold-glow)]" aria-label="Instagram" title="Instagram">
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="flex h-11 w-11 items-center justify-center rounded-full border border-gray-800 text-gray-400 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:rotate-6 hover:scale-110 hover:border-gold hover:text-gold hover:shadow-[0_0_20px_var(--color-gold-glow)]" aria-label="GitHub" title="GitHub">
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+                <path d="M9 18c-4.51 2-5-2-7-2"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Column 2: Navigation Links -->
+        <nav aria-label="Footer navigation">
+          <h3 class="font-heading text-sm font-semibold uppercase tracking-[0.16em] text-gray-500">Navigation</h3>
+          <ul class="mt-4 space-y-3 font-intro">
+            <li><a href="#home" class="inline-block text-sm text-gray-400 transition-all duration-300 hover:translate-x-1 hover:text-offwhite">Home</a></li>
+            <li><a href="#services" class="inline-block text-sm text-gray-400 transition-all duration-300 hover:translate-x-1 hover:text-offwhite">Services</a></li>
+            <li><a href="#about" class="inline-block text-sm text-gray-400 transition-all duration-300 hover:translate-x-1 hover:text-offwhite">About</a></li>
+            <li><a href="#skills" class="inline-block text-sm text-gray-400 transition-all duration-300 hover:translate-x-1 hover:text-offwhite">Skills</a></li>
+            <li><a href="#journey" class="inline-block text-sm text-gray-400 transition-all duration-300 hover:translate-x-1 hover:text-offwhite">Journey</a></li>
+            <li><a href="#contact" class="inline-block text-sm text-gray-400 transition-all duration-300 hover:translate-x-1 hover:text-offwhite">Contact</a></li>
+          </ul>
+        </nav>
+
+        <!-- Column 3: Services List -->
+        <nav aria-label="Footer services">
+          <h3 class="font-heading text-sm font-semibold uppercase tracking-[0.16em] text-gray-500">Services</h3>
+          <ul class="mt-4 space-y-3 font-intro">
+            <li><a href="#services" class="inline-block text-sm text-gray-400 transition-all duration-300 hover:translate-x-1 hover:text-offwhite">Web Design &amp; Development</a></li>
+            <li><a href="#services" class="inline-block text-sm text-gray-400 transition-all duration-300 hover:translate-x-1 hover:text-offwhite">Business Websites</a></li>
+            <li><a href="#services" class="inline-block text-sm text-gray-400 transition-all duration-300 hover:translate-x-1 hover:text-offwhite">Landing Pages</a></li>
+            <li><a href="#services" class="inline-block text-sm text-gray-400 transition-all duration-300 hover:translate-x-1 hover:text-offwhite">Gym &amp; Fitness Websites</a></li>
+            <li><a href="#services" class="inline-block text-sm text-gray-400 transition-all duration-300 hover:translate-x-1 hover:text-offwhite">Portfolio Websites</a></li>
+            <li><a href="#services" class="inline-block text-sm text-gray-400 transition-all duration-300 hover:translate-x-1 hover:text-offwhite">Website Maintenance</a></li>
+          </ul>
+        </nav>
+
+        <!-- Column 4: Back to Top Button -->
+        <div class="flex items-start lg:justify-end">
+          <button type="button" id="back-to-top" class="btn-shine group inline-flex items-center gap-2 rounded-full border border-gray-800 px-5 py-3 font-heading text-sm font-medium text-gray-400 transition-colors hover:border-gold hover:text-gold" aria-label="Back to top">
+            Back to Top
+            <svg class="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="m18 15-6-6-6 6"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Footer Bottom Bar -->
+      <div class="mt-14 flex flex-col items-center justify-between gap-4 border-t border-gray-800 pt-8 sm:flex-row">
+        <p class="font-intro text-xs text-gray-500">
+          &copy; <span id="copyright-year">2026</span> WEB CORE. Founded by Yuvaprakash. All Rights Reserved.
+        </p>
+        <p class="font-intro text-xs text-gray-600">
+          Tamil Nadu, India &bull; Bishop Heber College, Tiruchirappalli &bull; Building Digital Experiences That Matter.
+        </p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Central Interactive Engine Scripts -->
+  <script src="script.js"></script>
+</body>
+</html>
